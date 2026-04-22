@@ -107,3 +107,7 @@ export function getToolsByCategory(category: ToolCategory): Tool[] {
 export function getToolById(id: string): Tool | undefined {
   return tools.find((tool) => tool.id === id);
 }
+
+export function getAllToolIds(): string[] {
+  return tools.map((tool) => tool.id);
+}

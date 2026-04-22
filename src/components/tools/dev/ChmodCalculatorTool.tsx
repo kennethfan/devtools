@@ -8,10 +8,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 
 const permissions = [
-  { label: "Owner", user: "u", read: true, write: true, execute: true },
-  { label: "Group", user: "g", read: true, write: false, execute: true },
-  { label: "Other", user: "o", read: true, write: false, execute: true },
-  { label: "All", user: "a", read: true, write: true, execute: true },
+  { label: "Owner", user: "owner", read: true, write: true, execute: true },
+  { label: "Group", user: "group", read: true, write: false, execute: true },
+  { label: "Other", user: "other", read: true, write: false, execute: true },
 ];
 
 const numericValues = {
