@@ -40,6 +40,7 @@ function generateULID(): string {
 const { t } = useLocaleContext();
 
 export function UuidTool() {
+  const { t } = useLocaleContext();
   const [uuid, setUuid] = useState(generateUUID());
   const [ulid, setUlid] = useState(generateULID());
   const [copiedUuid, setCopiedUuid] = useState(false);
@@ -71,16 +72,16 @@ export function UuidTool() {
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
-            <span>Back to tools</span>
+            <span>{t("common.back")} to tools</span>
           </Link>
         </div>
       </header>
 
       <main className="container py-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">UUID & ULID Generator</h1>
-          <p className="text-muted-foreground">
-            Generate random UUIDs and ULIDs
+<h1 className="text-3xl font-bold mb-2">{t("common.generate")} UUID & ULID</h1>
+          <p className="text-muted-foreground mb-6">
+            {t("common.generate")} random UUIDs and ULIDs
           </p>
         </div>
 
