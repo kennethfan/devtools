@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLocaleContext } from "@/components/LocaleProvider";
 import { ArrowLeft, Copy, Check, AlertCircle } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -61,6 +62,8 @@ function isExpired(exp: number | string): boolean {
   if (isNaN(exp)) return false;
   return Date.now() > exp * 1000;
 }
+
+const { t } = useLocaleContext();
 
 export function JwtParserTool() {
   const [input, setInput] = useState("");

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLocaleContext } from "@/components/LocaleProvider";
 import { ArrowLeft, Copy, Check, ArrowRightLeft } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -9,6 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export function Base64Tool() {
+  const { t } = useLocaleContext();
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [copied, setCopied] = useState(false);
@@ -71,23 +73,23 @@ export function Base64Tool() {
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
-            <span>Back to tools</span>
+            <span>{t("common.back")} to tools</span>
           </Link>
         </div>
       </header>
 
       <main className="container py-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">Base64 Encode/Decode</h1>
-          <p className="text-muted-foreground">
-            Encode and decode Base64 strings
+<h1 className="text-3xl font-bold mb-2">Base64 {t("common.encode")}/{t("common.decode")}</h1>
+          <p className="text-muted-foreground mb-6">
+            Base64 {t("common.encode")} and {t("common.decode")}
           </p>
         </div>
 
         <Tabs value={mode} onValueChange={(v) => setMode(v as typeof mode)}>
           <TabsList className="mb-4">
-            <TabsTrigger value="encode">Encode</TabsTrigger>
-            <TabsTrigger value="decode">Decode</TabsTrigger>
+            <TabsTrigger value="encode">{t("common.encode")}</TabsTrigger>
+            <TabsTrigger value="decode">{t("common.decode")}</TabsTrigger>
           </TabsList>
 
           <TabsContent value={mode}>

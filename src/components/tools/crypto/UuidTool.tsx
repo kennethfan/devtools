@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLocaleContext } from "@/components/LocaleProvider";
 import { ArrowLeft, Copy, Check, RefreshCw } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -35,6 +36,8 @@ function generateULID(): string {
   
   return str;
 }
+
+const { t } = useLocaleContext();
 
 export function UuidTool() {
   const [uuid, setUuid] = useState(generateUUID());

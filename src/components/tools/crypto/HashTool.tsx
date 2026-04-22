@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLocaleContext } from "@/components/LocaleProvider";
 import { ArrowLeft, Copy, Check, RefreshCw } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -17,6 +18,8 @@ async function hashText(text: string, algorithm: HashAlgorithm): Promise<string>
   const hashArray = Array.from(new Uint8Array(hashBuffer));
   return hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
 }
+
+const { t } = useLocaleContext();
 
 export function HashTool() {
   const [input, setInput] = useState("");

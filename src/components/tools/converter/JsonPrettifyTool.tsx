@@ -1,12 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { useLocaleContext } from "@/components/LocaleProvider";
 import { ArrowLeft, Copy, Check, Eraser, Wand2 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+const { t } = useLocaleContext();
 
 export function JsonPrettifyTool() {
   const [input, setInput] = useState("");
