@@ -19,9 +19,8 @@ async function hashText(text: string, algorithm: HashAlgorithm): Promise<string>
   return hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
 }
 
-const { t } = useLocaleContext();
-
 export function HashTool() {
+  const { t } = useLocaleContext();
   const [input, setInput] = useState("");
   const [algorithm, setAlgorithm] = useState<HashAlgorithm>("sha256");
   const [hashes, setHashes] = useState<Record<HashAlgorithm, string>>({

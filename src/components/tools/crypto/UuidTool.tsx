@@ -37,8 +37,6 @@ function generateULID(): string {
   return str;
 }
 
-const { t } = useLocaleContext();
-
 export function UuidTool() {
   const { t } = useLocaleContext();
   const [uuid, setUuid] = useState(generateUUID());

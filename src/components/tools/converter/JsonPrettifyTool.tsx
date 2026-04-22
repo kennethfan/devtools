@@ -9,8 +9,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-const { t } = useLocaleContext();
-
 export function JsonPrettifyTool() {
   const { t } = useLocaleContext();
   const [input, setInput] = useState("");
