@@ -26,6 +26,14 @@ import { AesCryptoTool } from "@/components/tools/crypto/AesCryptoTool";
 import { HmacTool } from "@/components/tools/crypto/HmacTool";
 import { RsaKeyTool } from "@/components/tools/crypto/RsaKeyTool";
 import { PasswordStrengthTool } from "@/components/tools/crypto/PasswordStrengthTool";
+import { UrlParserTool } from "@/components/tools/web/UrlParserTool";
+import { UserAgentParserTool } from "@/components/tools/web/UserAgentParserTool";
+import { DeviceInfoTool } from "@/components/tools/web/DeviceInfoTool";
+import { HttpStatusCodesTool } from "@/components/tools/web/HttpStatusCodesTool";
+import { BasicAuthTool } from "@/components/tools/web/BasicAuthTool";
+import { SlugifyTool } from "@/components/tools/web/SlugifyTool";
+import { OtpGeneratorTool } from "@/components/tools/web/OtpGeneratorTool";
+import { MimeTypesTool } from "@/components/tools/web/MimeTypesTool";
 
 function ToolPageContent({ tool }: { tool: Tool }) {
   // 根据工具 ID 渲染对应的组件
@@ -79,6 +87,22 @@ function ToolPageContent({ tool }: { tool: Tool }) {
       return <RsaKeyTool />;
     case "password-strength":
       return <PasswordStrengthTool />;
+    case "url-parser":
+      return <UrlParserTool />;
+    case "user-agent-parser":
+      return <UserAgentParserTool />;
+    case "device-info":
+      return <DeviceInfoTool />;
+    case "http-status-codes":
+      return <HttpStatusCodesTool />;
+    case "basic-auth":
+      return <BasicAuthTool />;
+    case "slugify":
+      return <SlugifyTool />;
+    case "otp-generator":
+      return <OtpGeneratorTool />;
+    case "mime-types":
+      return <MimeTypesTool />;
     default:
       return (
         <div className="min-h-screen">
