@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useLocaleContext } from "@/components/LocaleProvider";
 import { ArrowLeft, Download, Copy, Check, RefreshCw } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -9,6 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
 export function QrcodeTool() {
+  const { t } = useLocaleContext();
   const [content, setContent] = useState("");
   const [qrCodeUrl, setQrCodeUrl] = useState("");
   const [size, setSize] = useState(256);
@@ -77,7 +79,7 @@ export function QrcodeTool() {
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
-            <span>Back to tools</span>
+            <span>{t("common.back")} to tools</span>
           </Link>
         </div>
       </header>
