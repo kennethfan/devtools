@@ -12,6 +12,14 @@ import { UuidTool } from "@/components/tools/crypto/UuidTool";
 import { HashTool } from "@/components/tools/crypto/HashTool";
 import { JwtParserTool } from "@/components/tools/web/JwtParserTool";
 import { QrcodeTool } from "@/components/tools/images/QrcodeTool";
+import { JsonCsvTool } from "@/components/tools/converter/JsonCsvTool";
+import { JsonTomlTool } from "@/components/tools/converter/JsonTomlTool";
+import { JsonXmlTool } from "@/components/tools/converter/JsonXmlTool";
+import { HtmlEscapeTool } from "@/components/tools/converter/HtmlEscapeTool";
+import { ColorFormatTool } from "@/components/tools/converter/ColorFormatTool";
+import { CaseConverterTool } from "@/components/tools/converter/CaseConverterTool";
+import { BaseConverterTool } from "@/components/tools/converter/BaseConverterTool";
+import { ListConverterTool } from "@/components/tools/converter/ListConverterTool";
 
 function ToolPageContent({ tool }: { tool: Tool }) {
   // 根据工具 ID 渲染对应的组件
@@ -35,6 +43,24 @@ function ToolPageContent({ tool }: { tool: Tool }) {
       return <JwtParserTool />;
     case "qrcode-generator":
       return <QrcodeTool />;
+    case "json-csv":
+      return <JsonCsvTool />;
+    case "json-toml":
+    case "toml-json":
+      return <JsonTomlTool />;
+    case "json-xml":
+    case "xml-json":
+      return <JsonXmlTool />;
+    case "html-escape":
+      return <HtmlEscapeTool />;
+    case "color-format":
+      return <ColorFormatTool />;
+    case "case-converter":
+      return <CaseConverterTool />;
+    case "base-converter":
+      return <BaseConverterTool />;
+    case "list-converter":
+      return <ListConverterTool />;
     default:
       return (
         <div className="min-h-screen">
