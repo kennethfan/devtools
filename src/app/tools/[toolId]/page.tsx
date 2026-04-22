@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { getToolById, Tool } from "@/config/tools";
 import { JsonYamlTool } from "@/components/tools/converter/JsonYamlTool";
+import { JsonPrettifyTool } from "@/components/tools/converter/JsonPrettifyTool";
 
 function ToolPageContent({ tool }: { tool: Tool }) {
   // 根据工具 ID 渲染对应的组件
@@ -12,6 +13,9 @@ function ToolPageContent({ tool }: { tool: Tool }) {
     case "json-yaml":
     case "yaml-json":
       return <JsonYamlTool />;
+    case "json-prettify":
+    case "json-minify":
+      return <JsonPrettifyTool />;
     default:
       return (
         <div className="min-h-screen">
