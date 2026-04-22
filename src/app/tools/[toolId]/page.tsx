@@ -53,6 +53,18 @@ import { IpAddressConverterTool } from "@/components/tools/network/IpAddressConv
 import { IpRangeExpanderTool } from "@/components/tools/network/IpRangeExpanderTool";
 import { MacAddressTool } from "@/components/tools/network/MacAddressTool";
 import { Ipv6UlaGeneratorTool } from "@/components/tools/network/Ipv6UlaGeneratorTool";
+import { LoremIpsumTool } from "@/components/tools/other/LoremIpsumTool";
+import { TextStatisticsTool } from "@/components/tools/other/TextStatisticsTool";
+import { EmojiPickerTool } from "@/components/tools/other/EmojiPickerTool";
+import { AsciiArtTool } from "@/components/tools/other/AsciiArtTool";
+import { NumeronymTool } from "@/components/tools/other/NumeronymTool";
+import { WifiQrcodeTool } from "@/components/tools/other/WifiQrcodeTool";
+import { SvgPlaceholderTool } from "@/components/tools/other/SvgPlaceholderTool";
+import { StopwatchTool } from "@/components/tools/other/StopwatchTool";
+import { TemperatureConverterTool } from "@/components/tools/other/TemperatureConverterTool";
+import { PhoneParserTool } from "@/components/tools/other/PhoneParserTool";
+import { IbanValidatorTool } from "@/components/tools/other/IbanValidatorTool";
+import { StringObfuscatorTool } from "@/components/tools/other/StringObfuscatorTool";
 
 function ToolPageContent({ tool }: { tool: Tool }) {
   // 根据工具 ID 渲染对应的组件
@@ -160,6 +172,30 @@ function ToolPageContent({ tool }: { tool: Tool }) {
       return <MacAddressTool />;
     case "ipv6-ula-generator":
       return <Ipv6UlaGeneratorTool />;
+    case "lorem-ipsum":
+      return <LoremIpsumTool />;
+    case "text-statistics":
+      return <TextStatisticsTool />;
+    case "emoji-picker":
+      return <EmojiPickerTool />;
+    case "ascii-art":
+      return <AsciiArtTool />;
+    case "numeronym":
+      return <NumeronymTool />;
+    case "wifi-qrcode":
+      return <WifiQrcodeTool />;
+    case "svg-placeholder":
+      return <SvgPlaceholderTool />;
+    case "stopwatch":
+      return <StopwatchTool />;
+    case "temperature-converter":
+      return <TemperatureConverterTool />;
+    case "phone-parser":
+      return <PhoneParserTool />;
+    case "iban-validator":
+      return <IbanValidatorTool />;
+    case "string-obfuscator":
+      return <StringObfuscatorTool />;
     default:
       return (
         <div className="min-h-screen">
