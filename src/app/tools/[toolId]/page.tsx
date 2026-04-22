@@ -6,6 +6,9 @@ import { ArrowLeft } from "lucide-react";
 import { getToolById, Tool } from "@/config/tools";
 import { JsonYamlTool } from "@/components/tools/converter/JsonYamlTool";
 import { JsonPrettifyTool } from "@/components/tools/converter/JsonPrettifyTool";
+import { Base64Tool } from "@/components/tools/converter/Base64Tool";
+import { UrlEncodeTool } from "@/components/tools/converter/UrlEncodeTool";
+import { UuidTool } from "@/components/tools/crypto/UuidTool";
 
 function ToolPageContent({ tool }: { tool: Tool }) {
   // 根据工具 ID 渲染对应的组件
@@ -16,6 +19,13 @@ function ToolPageContent({ tool }: { tool: Tool }) {
     case "json-prettify":
     case "json-minify":
       return <JsonPrettifyTool />;
+    case "base64":
+      return <Base64Tool />;
+    case "url-encode":
+      return <UrlEncodeTool />;
+    case "uuid-generator":
+    case "ulid-generator":
+      return <UuidTool />;
     default:
       return (
         <div className="min-h-screen">
