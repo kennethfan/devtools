@@ -20,6 +20,12 @@ import { ColorFormatTool } from "@/components/tools/converter/ColorFormatTool";
 import { CaseConverterTool } from "@/components/tools/converter/CaseConverterTool";
 import { BaseConverterTool } from "@/components/tools/converter/BaseConverterTool";
 import { ListConverterTool } from "@/components/tools/converter/ListConverterTool";
+import { TokenGeneratorTool } from "@/components/tools/crypto/TokenGeneratorTool";
+import { BcryptTool } from "@/components/tools/crypto/BcryptTool";
+import { AesCryptoTool } from "@/components/tools/crypto/AesCryptoTool";
+import { HmacTool } from "@/components/tools/crypto/HmacTool";
+import { RsaKeyTool } from "@/components/tools/crypto/RsaKeyTool";
+import { PasswordStrengthTool } from "@/components/tools/crypto/PasswordStrengthTool";
 
 function ToolPageContent({ tool }: { tool: Tool }) {
   // 根据工具 ID 渲染对应的组件
@@ -61,6 +67,18 @@ function ToolPageContent({ tool }: { tool: Tool }) {
       return <BaseConverterTool />;
     case "list-converter":
       return <ListConverterTool />;
+    case "token-generator":
+      return <TokenGeneratorTool />;
+    case "bcrypt":
+      return <BcryptTool />;
+    case "aes-crypto":
+      return <AesCryptoTool />;
+    case "hmac-generator":
+      return <HmacTool />;
+    case "rsa-key":
+      return <RsaKeyTool />;
+    case "password-strength":
+      return <PasswordStrengthTool />;
     default:
       return (
         <div className="min-h-screen">
