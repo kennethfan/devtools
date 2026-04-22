@@ -4,6 +4,7 @@ import { useTheme } from "next-themes";
 import { Sun, Moon, Monitor, Search, Command } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 interface HeaderProps {
   onSearchClick: () => void;
@@ -50,6 +51,8 @@ export function Header({ onSearchClick }: HeaderProps) {
               )}
             </Button>
           )}
+
+          <LanguageSwitcher />
         </div>
       </div>
     </header>
