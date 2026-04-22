@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLocaleContext } from "@/components/LocaleProvider";
 import { ArrowLeft, Copy, Check, ArrowRightLeft } from "lucide-react";
 import Link from "next/link";
 import yaml from "js-yaml";
@@ -10,6 +11,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export function JsonYamlTool() {
+  const { t } = useLocaleContext();
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [copied, setCopied] = useState(false);
@@ -69,7 +71,7 @@ export function JsonYamlTool() {
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
-            <span>Back to tools</span>
+            <span>{t("common.back")} to tools</span>
           </Link>
         </div>
       </header>
