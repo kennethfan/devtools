@@ -12,6 +12,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 const { t } = useLocaleContext();
 
 export function JsonPrettifyTool() {
+  const { t } = useLocaleContext();
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [copied, setCopied] = useState(false);
@@ -71,7 +72,7 @@ export function JsonPrettifyTool() {
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
-            <span>Back to tools</span>
+            <span>{t("common.back")} to tools</span>
           </Link>
         </div>
       </header>
