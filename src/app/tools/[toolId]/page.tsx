@@ -9,6 +9,9 @@ import { JsonPrettifyTool } from "@/components/tools/converter/JsonPrettifyTool"
 import { Base64Tool } from "@/components/tools/converter/Base64Tool";
 import { UrlEncodeTool } from "@/components/tools/converter/UrlEncodeTool";
 import { UuidTool } from "@/components/tools/crypto/UuidTool";
+import { HashTool } from "@/components/tools/crypto/HashTool";
+import { JwtParserTool } from "@/components/tools/web/JwtParserTool";
+import { QrcodeTool } from "@/components/tools/images/QrcodeTool";
 
 function ToolPageContent({ tool }: { tool: Tool }) {
   // 根据工具 ID 渲染对应的组件
@@ -26,6 +29,12 @@ function ToolPageContent({ tool }: { tool: Tool }) {
     case "uuid-generator":
     case "ulid-generator":
       return <UuidTool />;
+    case "hash-text":
+      return <HashTool />;
+    case "jwt-parser":
+      return <JwtParserTool />;
+    case "qrcode-generator":
+      return <QrcodeTool />;
     default:
       return (
         <div className="min-h-screen">
