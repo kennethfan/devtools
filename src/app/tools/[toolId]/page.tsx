@@ -34,6 +34,17 @@ import { BasicAuthTool } from "@/components/tools/web/BasicAuthTool";
 import { SlugifyTool } from "@/components/tools/web/SlugifyTool";
 import { OtpGeneratorTool } from "@/components/tools/web/OtpGeneratorTool";
 import { MimeTypesTool } from "@/components/tools/web/MimeTypesTool";
+import { SqlFormatterTool } from "@/components/tools/dev/SqlFormatterTool";
+import { YamlFormatterTool } from "@/components/tools/dev/YamlFormatterTool";
+import { XmlFormatterTool } from "@/components/tools/dev/XmlFormatterTool";
+import { JsonDiffTool } from "@/components/tools/dev/JsonDiffTool";
+import { TextDiffTool } from "@/components/tools/dev/TextDiffTool";
+import { RegexTesterTool } from "@/components/tools/dev/RegexTesterTool";
+import { CronGeneratorTool } from "@/components/tools/dev/CronGeneratorTool";
+import { GitCheatSheetTool } from "@/components/tools/dev/GitCheatSheetTool";
+import { ChmodCalculatorTool } from "@/components/tools/dev/ChmodCalculatorTool";
+import { DockerComposeTool } from "@/components/tools/dev/DockerComposeTool";
+import { EmailNormalizerTool } from "@/components/tools/dev/EmailNormalizerTool";
 
 function ToolPageContent({ tool }: { tool: Tool }) {
   // 根据工具 ID 渲染对应的组件
@@ -103,6 +114,28 @@ function ToolPageContent({ tool }: { tool: Tool }) {
       return <OtpGeneratorTool />;
     case "mime-types":
       return <MimeTypesTool />;
+    case "sql-formatter":
+      return <SqlFormatterTool />;
+    case "yaml-formatter":
+      return <YamlFormatterTool />;
+    case "xml-formatter":
+      return <XmlFormatterTool />;
+    case "json-diff":
+      return <JsonDiffTool />;
+    case "text-diff":
+      return <TextDiffTool />;
+    case "regex-tester":
+      return <RegexTesterTool />;
+    case "cron-generator":
+      return <CronGeneratorTool />;
+    case "git-cheatsheet":
+      return <GitCheatSheetTool />;
+    case "chmod-calculator":
+      return <ChmodCalculatorTool />;
+    case "docker-compose-converter":
+      return <DockerComposeTool />;
+    case "email-normalizer":
+      return <EmailNormalizerTool />;
     default:
       return (
         <div className="min-h-screen">
