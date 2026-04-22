@@ -45,6 +45,9 @@ import { GitCheatSheetTool } from "@/components/tools/dev/GitCheatSheetTool";
 import { ChmodCalculatorTool } from "@/components/tools/dev/ChmodCalculatorTool";
 import { DockerComposeTool } from "@/components/tools/dev/DockerComposeTool";
 import { EmailNormalizerTool } from "@/components/tools/dev/EmailNormalizerTool";
+import { MathCalculatorTool } from "@/components/tools/math/MathCalculatorTool";
+import { PercentageCalculatorTool } from "@/components/tools/math/PercentageCalculatorTool";
+import { ETACalculatorTool } from "@/components/tools/math/ETACalculatorTool";
 
 function ToolPageContent({ tool }: { tool: Tool }) {
   // 根据工具 ID 渲染对应的组件
@@ -136,6 +139,12 @@ function ToolPageContent({ tool }: { tool: Tool }) {
       return <DockerComposeTool />;
     case "email-normalizer":
       return <EmailNormalizerTool />;
+    case "math-calculator":
+      return <MathCalculatorTool />;
+    case "percentage-calculator":
+      return <PercentageCalculatorTool />;
+    case "eta-calculator":
+      return <ETACalculatorTool />;
     default:
       return (
         <div className="min-h-screen">
