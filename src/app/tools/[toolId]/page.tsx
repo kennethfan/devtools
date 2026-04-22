@@ -48,6 +48,11 @@ import { EmailNormalizerTool } from "@/components/tools/dev/EmailNormalizerTool"
 import { MathCalculatorTool } from "@/components/tools/math/MathCalculatorTool";
 import { PercentageCalculatorTool } from "@/components/tools/math/PercentageCalculatorTool";
 import { ETACalculatorTool } from "@/components/tools/math/ETACalculatorTool";
+import { IpSubnetCalculatorTool } from "@/components/tools/network/IpSubnetCalculatorTool";
+import { IpAddressConverterTool } from "@/components/tools/network/IpAddressConverterTool";
+import { IpRangeExpanderTool } from "@/components/tools/network/IpRangeExpanderTool";
+import { MacAddressTool } from "@/components/tools/network/MacAddressTool";
+import { Ipv6UlaGeneratorTool } from "@/components/tools/network/Ipv6UlaGeneratorTool";
 
 function ToolPageContent({ tool }: { tool: Tool }) {
   // 根据工具 ID 渲染对应的组件
@@ -145,6 +150,16 @@ function ToolPageContent({ tool }: { tool: Tool }) {
       return <PercentageCalculatorTool />;
     case "eta-calculator":
       return <ETACalculatorTool />;
+    case "ip-subnet-calculator":
+      return <IpSubnetCalculatorTool />;
+    case "ip-address-converter":
+      return <IpAddressConverterTool />;
+    case "ip-range-expander":
+      return <IpRangeExpanderTool />;
+    case "mac-address-lookup":
+      return <MacAddressTool />;
+    case "ipv6-ula-generator":
+      return <Ipv6UlaGeneratorTool />;
     default:
       return (
         <div className="min-h-screen">
