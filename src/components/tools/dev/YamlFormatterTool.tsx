@@ -7,8 +7,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
+import { useLocaleContext } from "@/components/LocaleProvider";
 
 export function YamlFormatterTool() {
+  const { t } = useLocaleContext();
   const [input, setInput] = useState(`name: john
 age: 30
 active: true
@@ -22,7 +24,7 @@ tags:
 
   const handleFormat = () => {
     if (!input.trim()) {
-      setError("Please enter YAML");
+      setError(t("common.error"));
       return;
     }
 
@@ -33,14 +35,14 @@ tags:
       setOutput(formatted);
       setError("");
     } catch (e) {
-      setError("Invalid YAML. Please check the syntax.");
+      setError(t("common.error"));
       setOutput("");
     }
   };
 
   const handleMinify = () => {
     if (!input.trim()) {
-      setError("Please enter YAML");
+      setError(t("common.error"));
       return;
     }
 
@@ -51,7 +53,7 @@ tags:
       setOutput(minified.trim());
       setError("");
     } catch (e) {
-      setError("Invalid YAML");
+      setError(t("common.error"));
       setOutput("");
     }
   };
@@ -69,7 +71,7 @@ tags:
       setError("");
       alert("✓ Valid YAML");
     } catch (e) {
-      setError("Invalid YAML: " + (e as Error).message);
+      setError(t("common.error"));
     }
   };
 
@@ -79,20 +81,20 @@ tags:
         <Link href="/">
           <Button variant="ghost" size="sm">
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Back
+            {t("common.back")}
           </Button>
         </Link>
       </div>
 
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold mb-2">YAML Formatter</h1>
+        <h1 className="text-3xl font-bold mb-2">YAML {t("common.format")}</h1>
         <p className="text-muted-foreground mb-6">
-          Format and validate YAML documents
+          {t("tool.inputYaml")}
         </p>
 
         <Card className="mb-6">
           <CardHeader>
-            <CardTitle className="text-lg">Options</CardTitle>
+            <CardTitle className="text-lg">{t("tool.configuration")}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex items-center gap-4">
@@ -117,7 +119,7 @@ tags:
         <div className="grid md:grid-cols-2 gap-4">
           <Card>
             <CardHeader>
-              <CardTitle className="text-lg">Input YAML</CardTitle>
+              <CardTitle className="text-lg">{t("tool.inputYaml")}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <Textarea
@@ -129,10 +131,10 @@ tags:
               {error && <p className="text-destructive text-sm">{error}</p>}
               <div className="flex gap-2">
                 <Button onClick={handleFormat} className="flex-1">
-                  Format
+                  {t("common.format")}
                 </Button>
                 <Button variant="outline" onClick={handleMinify}>
-                  Minify
+                  {t("common.minify")}
                 </Button>
               </div>
             </CardContent>
@@ -140,7 +142,7 @@ tags:
 
           <Card>
             <CardHeader className="flex flex-row items-center justify-between">
-              <CardTitle className="text-lg">Formatted YAML</CardTitle>
+              <CardTitle className="text-lg">{t("tool.output")}</CardTitle>
               <Button variant="ghost" size="sm" onClick={handleCopy} disabled={!output}>
                 {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
               </Button>

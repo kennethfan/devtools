@@ -4,36 +4,66 @@ import { useState, useEffect } from "react";
 import { Header } from "@/components/layout/Header";
 import { SearchDialog } from "@/components/layout/SearchDialog";
 import { CategorySection } from "@/components/layout/ToolCard";
-import { tools, getToolsByCategory, type ToolCategory } from "@/config/tools";
+import { getToolsByCategory, type ToolCategory } from "@/config/tools";
+import { useLocaleContext } from "@/components/LocaleProvider";
 
-const categoryMeta: Record<ToolCategory, { icon: string; name: string }> = {
-  crypto: { icon: "🔐", name: "Crypto" },
-  converter: { icon: "🔄", name: "Converter" },
-  web: { icon: "🌐", name: "Web" },
-  images: { icon: "🖼️", name: "Images & Videos" },
-  development: { icon: "💻", name: "Development" },
-  network: { icon: "🌐", name: "Network" },
-  math: { icon: "🔢", name: "Math" },
-  measurement: { icon: "📏", name: "Measurement" },
-  text: { icon: "📝", name: "Text" },
-  data: { icon: "💰", name: "Data" },
-};
+function CategoryMeta() {
+  const { locale, t } = useLocaleContext();
+  
+  const categoryMeta: Record<ToolCategory, { icon: string; name: string; nameZh: string }> = {
+    crypto: { icon: "🔐", name: "Crypto", nameZh: "加密" },
+    converter: { icon: "🔄", name: "Converter", nameZh: "转换器" },
+    web: { icon: "🌐", name: "Web", nameZh: "Web" },
+    images: { icon: "🖼️", name: "Images & Videos", nameZh: "图片和视频" },
+    development: { icon: "💻", name: "Development", nameZh: "开发" },
+    network: { icon: "🌐", name: "Network", nameZh: "网络" },
+    math: { icon: "🔢", name: "Math", nameZh: "数学" },
+    measurement: { icon: "📏", name: "Measurement", nameZh: "测量" },
+    text: { icon: "📝", name: "Text", nameZh: "文本" },
+    data: { icon: "💰", name: "Data", nameZh: "数据" },
+  };
 
-const orderedCategories: ToolCategory[] = [
-  "converter",
-  "crypto",
-  "web",
-  "development",
-  "network",
-  "math",
-  "text",
-  "images",
-  "measurement",
-  "data",
-];
+  const orderedCategories: ToolCategory[] = [
+    "converter",
+    "crypto",
+    "web",
+    "development",
+    "network",
+    "math",
+    "text",
+    "images",
+    "measurement",
+    "data",
+  ];
+
+  return (
+    <>
+      {orderedCategories.map((category) => {
+        const categoryTools = getToolsByCategory(category);
+        if (categoryTools.length === 0) return null;
+        const meta = categoryMeta[category];
+        return (
+          <CategorySection
+            key={category}
+            category={category}
+            name={locale === "zh" ? meta.nameZh : meta.name}
+            icon={meta.icon}
+            tools={categoryTools}
+          />
+        );
+      })}
+    </>
+  );
+}
 
 export default function Home() {
   const [searchOpen, setSearchOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { t } = useLocaleContext();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -53,29 +83,16 @@ export default function Home() {
 
       <main className="container py-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">All the tools</h1>
+          <h1 className="text-3xl font-bold mb-2">{t("home.title")}</h1>
           <p className="text-muted-foreground">
-            Handy online tools for developers
+            {t("home.subtitle")}
           </p>
         </div>
 
-        {orderedCategories.map((category) => {
-          const categoryTools = getToolsByCategory(category);
-          if (categoryTools.length === 0) return null;
-          const meta = categoryMeta[category];
-          return (
-            <CategorySection
-              key={category}
-              category={category}
-              name={meta.name}
-              icon={meta.icon}
-              tools={categoryTools}
-            />
-          );
-        })}
+        {mounted && <CategoryMeta />}
 
         <footer className="mt-12 pt-6 border-t text-center text-sm text-muted-foreground">
-          <p>DevTools © 2024 | Built with Next.js</p>
+          <p>{t("home.footer")}</p>
         </footer>
       </main>
 

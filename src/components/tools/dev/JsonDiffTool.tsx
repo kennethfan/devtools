@@ -6,8 +6,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
+import { useLocaleContext } from "@/components/LocaleProvider";
 
 export function JsonDiffTool() {
+  const { t } = useLocaleContext();
   const [left, setLeft] = useState(`{"name": "John", "age": 30}`);
   const [right, setRight] = useState(`{"name": "John", "age": 31, "city": "NYC"}`);
   const [output, setOutput] = useState("");
@@ -24,9 +26,9 @@ export function JsonDiffTool() {
         return lines.map((line: string) => prefix + line).join("\n");
       }).join("\n");
       
-      setOutput(result || "No differences");
+      setOutput(result || t("tool.noDifferences"));
     } catch (e) {
-      setOutput("Error comparing JSON. Make sure both inputs are valid JSON.");
+      setOutput(t("tool.invalidJson"));
     }
   };
 
@@ -47,7 +49,7 @@ export function JsonDiffTool() {
         <Link href="/">
           <Button variant="ghost" size="sm">
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Back
+            {t("common.back")}
           </Button>
         </Link>
       </div>
@@ -55,13 +57,13 @@ export function JsonDiffTool() {
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold mb-2">JSON Diff</h1>
         <p className="text-muted-foreground mb-6">
-          Compare two JSON objects and show differences
+          {t("tool.inputJson")}
         </p>
 
         <div className="grid md:grid-cols-2 gap-4 mb-4">
           <Card>
             <CardHeader>
-              <CardTitle className="text-lg">Left JSON</CardTitle>
+              <CardTitle className="text-lg">{t("tool.leftOriginal")}</CardTitle>
             </CardHeader>
             <CardContent>
               <Textarea
@@ -75,7 +77,7 @@ export function JsonDiffTool() {
 
           <Card>
             <CardHeader>
-              <CardTitle className="text-lg">Right JSON</CardTitle>
+              <CardTitle className="text-lg">{t("tool.rightModified")}</CardTitle>
             </CardHeader>
             <CardContent>
               <Textarea
@@ -89,17 +91,17 @@ export function JsonDiffTool() {
         </div>
 
         <Button onClick={handleCompare} className="w-full mb-4">
-          Compare JSON
+          {t("common.compare")}
         </Button>
 
         {output && (
           <Card>
             <CardHeader className="flex flex-row items-center justify-between">
-              <CardTitle className="text-lg">Differences</CardTitle>
+              <CardTitle className="text-lg">{t("tool.result")}</CardTitle>
               <div className="flex gap-2">
                 <Button variant="outline" size="sm" onClick={handleSwap}>
                   <ArrowRightLeft className="h-4 w-4 mr-1" />
-                  Use Result
+                  {t("tool.useResult")}
                 </Button>
                 <Button variant="ghost" size="sm" onClick={handleCopy}>
                   {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}

@@ -6,29 +6,23 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useLocaleContext } from "@/components/LocaleProvider";
 
 type CronField = "minute" | "hour" | "dayOfMonth" | "month" | "dayOfWeek";
 
-const fields: { label: string; key: CronField; min: number; max: number }[] = [
-  { label: "Minute", key: "minute", min: 0, max: 59 },
-  { label: "Hour", key: "hour", min: 0, max: 23 },
-  { label: "Day of Month", key: "dayOfMonth", min: 1, max: 31 },
-  { label: "Month", key: "month", min: 1, max: 12 },
-  { label: "Day of Week", key: "dayOfWeek", min: 0, max: 6 },
-];
-
-const presets = [
-  { label: "Every minute", cron: "* * * * *" },
-  { label: "Every hour", cron: "0 * * * *" },
-  { label: "Every day at midnight", cron: "0 0 * * *" },
-  { label: "Every Monday", cron: "0 0 * * 1" },
-  { label: "Every month", cron: "0 0 1 * *" },
-  { label: "Every 5 minutes", cron: "*/5 * * * *" },
-  { label: "Every 30 minutes", cron: "*/30 * * * *" },
-];
-
 export function CronGeneratorTool() {
+  const { t } = useLocaleContext();
+
+  const presets = [
+    { label: "Every minute", cron: "* * * * *" },
+    { label: "Every hour", cron: "0 * * * *" },
+    { label: "Every day at midnight", cron: "0 0 * * *" },
+    { label: "Every Monday", cron: "0 0 * * 1" },
+    { label: "Every month", cron: "0 0 1 * *" },
+    { label: "Every 5 minutes", cron: "*/5 * * * *" },
+    { label: "Every 30 minutes", cron: "*/30 * * * *" },
+  ];
+
   const [cron, setCron] = useState("0 * * * *");
   const [fields, setFields] = useState({
     minute: "*",
@@ -58,7 +52,7 @@ export function CronGeneratorTool() {
       setNextRuns(next);
       setError("");
     } catch (e) {
-      setError("Invalid cron expression");
+      setError(t("common.error"));
       setNextRuns([]);
     }
   };
@@ -75,7 +69,7 @@ export function CronGeneratorTool() {
         <Link href="/">
           <Button variant="ghost" size="sm">
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Back
+            {t("common.back")}
           </Button>
         </Link>
       </div>
@@ -83,12 +77,12 @@ export function CronGeneratorTool() {
       <div className="max-w-3xl mx-auto">
         <h1 className="text-3xl font-bold mb-2">Cron Generator</h1>
         <p className="text-muted-foreground mb-6">
-          Generate and validate cron expressions
+          {t("tool.cronExpression")}
         </p>
 
         <Card className="mb-6">
           <CardHeader className="flex flex-row items-center justify-between">
-            <CardTitle className="text-lg">Cron Expression</CardTitle>
+            <CardTitle className="text-lg">{t("tool.cronExpression")}</CardTitle>
             <Button variant="ghost" size="sm" onClick={handleCopy}>
               {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
             </Button>
